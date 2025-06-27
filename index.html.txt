@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Courses for IT | دورات تقنية المعلومات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        :root {
+            --primary-color: #306998; /* Python blue */
+            --secondary-color: #FFD43B; /* Python yellow */
+            --accent-color: #4B8BBE;
+            --light-color: #f0f9ff;
+            --dark-color: #0f172a;
+            --text-color: #334155;
+            --card-bg: #ffffff;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* شريط التنقل */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            margin-left: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: 30px;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* قسم البطل */
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: 0 auto 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(48, 105, 152, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .highlight {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        /* قسم الفيديو الجديد */
+        .video-section {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .video-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(48, 105, 152, 0.05), rgba(75, 139, 190, 0.05));
+            clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
+            z-index: -1;
+        }
+        
+        .video-title {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .video-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .video-description {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            background: black;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(48, 105, 152, 0.3), rgba(75, 139, 190, 0.3));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: var(--transition);
+            z-index: 2;
+            cursor: pointer;
+        }
+        
+        .video-container:hover .video-overlay {
+            opacity: 0.8;
+        }
+        
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .play-button i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+        
+        .video-stats {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 40px;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            min-width: 180px;
+        }
+        
+        .stat-box i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .stat-box h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-box p {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        /* بطاقات الدورات */
+        .courses-section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(48, 105, 152, 0.1);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(48, 105, 152, 0.2);
+        }
+        
+        .course-icon {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .course-icon i {
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .course-content {
+            padding: 25px;
+        }
+        
+        .course-title {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .course-count {
+            display: inline-block;
+            background: var(--light-color);
+            color: var(--primary-color);
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            border: 2px solid rgba(48, 105, 152, 0.2);
+        }
+        
+        /* قسم الإحصائيات */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 20px;
+            padding: 50px 30px;
+            margin-bottom: 60px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(48, 105, 152, 0.3);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(to bottom, #ffffff, #e0f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        /* زر الاشتراك */
+        .cta-section {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(48, 105, 152, 0.4);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(48, 105, 152, 0.5);
+        }
+        
+        /* التذييل */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            border-top: 1px solid rgba(48, 105, 152, 0.1);
+            margin-top: 40px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 10px;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 8px 12px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .video-stats {
+                flex-wrap: wrap;
+            }
+            
+            .video-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero {
+                padding: 20px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .course-card {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+            
+            .video-description {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            .stat-box {
+                padding: 15px 20px;
+                min-width: 140px;
+            }
+            
+            .stat-box i {
+                font-size: 2rem;
+            }
+            
+            .stat-box h4 {
+                font-size: 0.9rem;
+            }
+            
+            .stat-box p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- شريط التنقل -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                أكاديمية بايثون
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">الدورات</a></li>
+                <li><a href="#">المدربون</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+            </ul>
+        </nav>
+        
+        <!-- قسم البطل -->
+        <section class="hero">
+            <h1>أفضل <span class="highlight">دورات بايثون</span> لتطوير مهاراتك البرمجية</h1>
+            <p>تعلم لغة بايثون لتطوير تطبيقات الويب، الذكاء الاصطناعي، تحليل البيانات، وأكثر من ذلك</p>
+        </section>
+        
+        <!-- قسم الفيديو الجديد -->
+        <section class="video-section">
+            <h2 class="video-title">دورة تعلم بايثون من الصفر</h2>
+            <p class="video-description">شاهد هذا الفيديو التعليمي الشامل لتعلم أساسيات لغة بايثون في أقل من 30 دقيقة</p>
+            
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <!-- سيتم إضافة الفيديو ديناميكياً عند النقر -->
+                </div>
+                <div class="video-overlay" id="video-overlay">
+                    <div class="play-button" id="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-stats">
+                <div class="stat-box">
+                    <i class="fas fa-play-circle"></i>
+                    <h4>مشاهدات الفيديو</h4>
+                    <p>24,560+</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-user-graduate"></i>
+                    <h4>طلاب مسجلون</h4>
+                    <p>10,250+</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h4>مدربون خبراء</h4>
+                    <p>58+</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- قسم الدورات -->
+        <section class="courses-section">
+            <h2 class="section-title">دوراتنا الأكثر طلباً في بايثون</h2>
+            
+            <div class="courses-grid">
+                <!-- دورة بايثون للمبتدئين -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, #306998, #4B8BBE);">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">بايثون للمبتدئين</h3>
+                        <span class="course-count">12 دورة</span>
+                    </div>
+                </div>
+                
+                <!-- دورة تطوير الويب -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, #306998, #4B8BBE);">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">تطوير الويب ببايثون</h3>
+                        <span class="course-count">8 دورة</span>
+                    </div>
+                </div>
+                
+                <!-- دورة الذكاء الاصطناعي -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, #306998, #4B8BBE);">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">الذكاء الاصطناعي ببايثون</h3>
+                        <span class="course-count">6 دورة</span>
+                    </div>
+                </div>
+                
+                <!-- دورة تحليل البيانات -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, #306998, #4B8BBE);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">تحليل البيانات ببايثون</h3>
+                        <span class="course-count">9 دورة</span>
+                    </div>
+                </div>
+                
+                <!-- دورة الأتمتة -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, #306998, #4B8BBE);">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">أتمتة المهام ببايثون</h3>
+                        <span class="course-count">7 دورة</span>
+                    </div>
+                </div>
+                
+                <!-- دورة الألعاب -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, #306998, #4B8BBE);">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">برمجة الألعاب ببايثون</h3>
+                        <span class="course-count">5 دورة</span>
+                    </div>
+                </div>
+                
+                <!-- دورة Django -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, #306998, #4B8BBE);">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">إطار عمل Django</h3>
+                        <span class="course-count">4 دورة</span>
+                    </div>
+                </div>
+                
+                <!-- دورة Flask -->
+                <div class="course-card">
+                    <div class="course-icon" style="background: linear-gradient(135deg, #306998, #4B8BBE);">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">إطار عمل Flask</h3>
+                        <span class="course-count">3 دورة</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- قسم الإحصائيات -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">15,000+</div>
+                    <div class="stat-label">طالب مسجل</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-label">دورة بايثون</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">رضا العملاء</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">مدرب محترف</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- دعوة للعمل -->
+        <section class="cta-section">
+            <a href="#" class="cta-button">ابدأ رحلة تعلم بايثون الآن <i class="fas fa-arrow-left"></i></a>
+        </section>
+        
+        <!-- تذييل الصفحة -->
+        <footer>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>© 2023 أكاديمية بايثون. جميع الحقوق محفوظة.</p>
+            <p>صممنا بحب لتطوير مهاراتك البرمجية</p>
+        </footer>
+    </div>
+    
+    <script>
+        // تفعيل زر تشغيل الفيديو
+        document.addEventListener('DOMContentLoaded', function() {
+            const playButton = document.getElementById('play-button');
+            const videoOverlay = document.getElementById('video-overlay');
+            const videoWrapper = document.querySelector('.video-wrapper');
+            
+            playButton.addEventListener('click', function() {
+                // إنشاء عنصر iframe ديناميكيًا عند النقر
+                const iframe = document.createElement('iframe');
+                iframe.src = "https://www.youtube.com/embed/OiLgG4CabPo?autoplay=1";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                iframe.allowFullscreen = true;
+                iframe.style.width = "100%";
+                iframe.style.height = "100%";
+                iframe.style.position = "absolute";
+                iframe.style.top = "0";
+                iframe.style.left = "0";
+                iframe.style.border = "none";
+                
+                // إزالة أي محتوى سابق وإضافة الـ iframe الجديد
+                videoWrapper.innerHTML = '';
+                videoWrapper.appendChild(iframe);
+                
+                // إخفاء زر التشغيل
+                videoOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    videoOverlay.style.display = 'none';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
